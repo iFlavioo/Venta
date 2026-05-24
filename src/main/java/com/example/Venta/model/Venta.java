@@ -1,6 +1,7 @@
 package com.example.Venta.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
