@@ -15,7 +15,7 @@ public class VentaService {
     @Autowired VentaRepository ventaRepository;
 
 public void registrarVenta(Venta venta) {
-        venta.setFechaVenta((java.sql.Date) new Date());
+        venta.setFechaVenta(new Date());
         venta.setEstado("PENDIENTE");  
         
         
@@ -29,7 +29,7 @@ public void registrarVenta(Venta venta) {
     public double calcularTotal(double subtotal, double impuestoPorcentaje, double descuento) {
         double impuestos = subtotal * impuestoPorcentaje;
         double total = (subtotal + impuestos) - descuento;
-        return Math.max(total, 0.0); // Previene que el total sea negativo
+        return Math.max(total, 0.0); 
     }
 
     public String generarBoleta(Long idVenta) {
@@ -63,7 +63,7 @@ public void registrarVenta(Venta venta) {
         if (ventaOpt.isPresent()) {
             Venta venta = ventaOpt.get();
             venta.setEstado("CANCELADA");
-            ventaRepository.save(venta); // Actualiza el estado en la BD
+            ventaRepository.save(venta);
         } else {
             throw new RuntimeException("La venta con ID " + idVenta + " no existe.");
         }
